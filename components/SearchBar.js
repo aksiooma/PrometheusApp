@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 const SearchBar = ({ containerStyle, value, onClear, onChangeText }) => {
 
-    //Hakukenttä
+    //SearchBar
     return (
         <View style={[styles.container, { ...containerStyle }]}>
             <TextInput

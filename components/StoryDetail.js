@@ -6,20 +6,20 @@ import ShelveButton from "./ShelveButton";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import TextInputModal from "./TextInputModal";
 
-
+ 
 export default function StoryDetail(props) {
 
-    //otetaan propseina yksittäinen tarina
+    //Single story
     const [story, setStory] = useState(props.route.params.story)
 
-    //käytetään context provideria
+    //Context provider
     const { stories, setStories } = useStories();
 
-    //Tekstieditori
+    //Text editor
     const [showModal, setShowModal] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
 
-    //tekstin poistaminen
+    //Delete story
     const deleteNote = async () => {
         const result = await AsyncStorage.getItem('STORIES')
 
@@ -31,7 +31,7 @@ export default function StoryDetail(props) {
         props.navigation.goBack();
     }
 
-    //tekstin editoiminen
+    //Edit text
     const handleUpdate = async (desc) => {
 
         const result = await AsyncStorage.getItem('STORIES')
@@ -52,18 +52,18 @@ export default function StoryDetail(props) {
         await AsyncStorage.setItem('STORIES', JSON.stringify(shelvedStories))
     };
 
-    //suljetaan editori
+    //Close editor
     const handleOnClose = () => {
         setShowModal(false)
     }
 
-    //avataan editori
+    //Open editor
     const openEditModal = () => {
         setIsEdit(true);
         setShowModal(true);
     }
 
-    //näytä alert, jos halutaan poistaa viesti
+    //display alert
     const displayDeleteAlert = () => {
         Alert.alert('Are You sure!', 'This action will delete your story!', [
             {
@@ -110,7 +110,6 @@ export default function StoryDetail(props) {
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
         backgroundColor: '#181818',
         alignItems: 'center',
         justifyContent: 'flex-start',

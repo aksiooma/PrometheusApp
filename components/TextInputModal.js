@@ -12,14 +12,12 @@ import { useKeyboard } from './IsKeyboardOpen';
 import ShelveButton from './ShelveButton';
 
 const TextInputModal = ({ visible, onClose, onSubmit, story, isEdit }) => {
-  //   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
   const handleModalClose = () => {
     Keyboard.dismiss();
   };
 
   const isKeyBoardOpen = useKeyboard();
-
 
   useEffect(() => {
     if (isEdit) {

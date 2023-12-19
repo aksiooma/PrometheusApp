@@ -6,12 +6,8 @@ const Story = ({ item, onPress }) => {
     const { text } = item;
 
     return (
-
-
         <TouchableOpacity onPress={onPress} style={styles.container}>
-
             <Text numberOfLines={4} style={styles.item}>{text}</Text>
-
         </TouchableOpacity>
     )
 }
@@ -20,7 +16,7 @@ const width = Dimensions.get('window').width - 44;
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
+       
         backgroundColor: '#F9FBFF',
         alignItems: 'center',
         width: width / 2 - 10,
@@ -32,11 +28,8 @@ const styles = StyleSheet.create({
 
     },
     item: {
-
         color: '#181818',
-
     }
-
 
 
 });

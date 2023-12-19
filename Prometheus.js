@@ -5,40 +5,35 @@ import { StyleSheet, Text, View, SafeAreaView, TouchableWithoutFeedback, Keyboar
 import { Button } from 'react-native-elements';
 import { Input } from 'react-native-elements';
 import { useStories } from './components/context/StoryProvider';
-import { RAPID_API_KEY, RAPID_HOST } from '@env';
-import Testdata from './Testdata'
-
+import testdata from './Testdata'
 
 export default function WritePrometheus({ navigation }) {
 
   const { setStories, stories } = useStories();
 
-  //tilamuuttuja, jolla voidaan vaikuttaa komponenttien asetteluun ja näkyvyyteen.
   const [state, setState] = useState({
     isLoaded: false,
   })
 
-  //Input teksti
+  //Input text
   const [text, setText] = useState('')
 
-  //Rajapinnasta haetaan postaukset
+  //Fetch/SetPosts
   const [posts, setPosts] = useState([]);
 
-
-  //Asetetaan writingPrompt teksti
+  //Set WritingPrompt`
   const [title, setTitle] = useState('');
   const [story, setStory] = useState('');
 
-  //käsitellään teksti asetetaan se Storyn tilamuuttujan arvoksi
+  //Handle text, setStory
   const handleOnChangeText = (text, valueFor) => {
     if (valueFor === 'story') setStory(text)
   }
 
-
-  //viittaukset inputille ja inputin tyhjäys
+  //Input Reference
   const inputRef = useRef();
 
-  //kun talletetaan, niin tekstikenttä tyhjäksi
+  //Clear textarea when story is stored
   const pressed = () => {
     inputRef.current.clear();
   };
@@ -58,21 +53,12 @@ export default function WritePrometheus({ navigation }) {
 
   }
 
-
-
-  // FOR FETCHING REDDIT WP's ONCE. To use this you need to add reddit3.p.rapidapi.com API key. Might not exist anymore in 2023.
+  // For fetching subreddit once.
   useEffect(() => {
     const fetchData = async () => {
-      const url = 'https://reddit34.p.rapidapi.com/getPostsBySubreddit?subreddit=WritingPrompts&sort=hot';
-      const options = {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Key': RAPID_API_KEY,
-          'X-RapidAPI-Host': RAPID_HOST
-        }
-      };
+      const url = `https://prometheus-backend-api.vercel.app/api/reddit?subreddit=${process.env.SUBREDDIT_NAME}&sort=hot`;
       try {
-        const response = await fetch(url, options);
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -80,20 +66,14 @@ export default function WritePrometheus({ navigation }) {
         setPosts(result);
       } catch (error) {
         console.error('Fetching error: ', error);
+        setPosts(testdata);
       }
     };
 
     fetchData();
   }, []);
 
-
-  //Instead of Reddit API, populate posts with Testdata
-  // useEffect(() => {
-  //   setPosts(Testdata)
-  // }, [])
-
-
-  //funktio joka valitsee satunnaisen WP-title tekstin / Selects a random WP-title: uses TEST-DATA instead of Reddit API.
+  //Function that selects random WP
   const titleSearcher = () => {
     if (posts && posts.data && posts.data.posts && posts.data.posts.length > 0) {
       const randomIndex = Math.floor(Math.random() * posts.data.posts.length);
@@ -106,7 +86,7 @@ export default function WritePrometheus({ navigation }) {
   };
 
 
-  //Talleta yksi Story Async hyllyyn.
+  //Store the story in the storage
   const handleShelving = async (story) => {
     if (story.trim().length < 10) { Alert.alert('Story length is under 10 characters, Story is not shelved') }
     else {
@@ -117,11 +97,9 @@ export default function WritePrometheus({ navigation }) {
         text: story
       };
 
-
       const shelvedStories = [...stories, title];
       setStories(shelvedStories);
       await AsyncStorage.setItem("STORIES", JSON.stringify(shelvedStories))
-      // .then(() => navigation.navigate("Storybase"))
       setText('');
       setStory('');
     }

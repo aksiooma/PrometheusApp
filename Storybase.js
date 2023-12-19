@@ -7,20 +7,20 @@ import NotFound from './components/NotFound';
 
 export default function Storybase({ navigation }) {
 
-    //Tilamuuttuja hakutoiminnolle
+    //Search
     const [searchQuery, setSearchQuery] = useState('')
     const [resultNotFound, setResultNotFound] = useState(false);
 
     //Context Provider
     const { stories, setStories, findStories } = useStories();
 
-    //avataan yksityiskohtainen näkymä kirjoitukselle
+    //Open the story
     const openStory = (story) => {
         navigation.navigate('StoryDetail', { story })
     }
 
 
-    // Hakutoiminnon käsitteleminen
+    // Handle search function
     const handleOnSearchInput = async text => {
         setSearchQuery(text);
         if (!text.trim()) {
@@ -29,7 +29,7 @@ export default function Storybase({ navigation }) {
             return await findStories();
 
         }
-        //Käsitellään filteröinti haulle
+        //Search filter
         const filteredStories = stories.filter(story => {
             if (story.text.toLowerCase().includes(text.toLowerCase())) {
                 return story;
@@ -42,7 +42,7 @@ export default function Storybase({ navigation }) {
         }
     };
 
-    // X eli clear buttonin käsittely
+    //  Handle X, clear button
     const handleOnClear = async () => {
         setSearchQuery('')
         setResultNotFound(false)

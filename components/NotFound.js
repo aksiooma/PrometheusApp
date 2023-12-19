@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 
-//kun hakutulos ei saa vastaavuuksia
+//Not found
 const NotFound = () => {
   return (
     <View style={[StyleSheet.absoluteFillObject, styles.container]}>

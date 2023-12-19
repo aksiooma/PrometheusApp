@@ -9,7 +9,6 @@ import StoryProvider from './components/context/StoryProvider';
 import StoryDetail from './components/StoryDetail';
 
 
-
 const PrometheusStack = createNativeStackNavigator();
 
 function PrometheusStackScreen() {
@@ -61,14 +60,7 @@ export default function App() {
             },
             tabBarActiveTintColor: 'tomato',
             tabBarInactiveTintColor: 'gray',
-            // headerStyle: {
-            // backgroundColor: '#181818',},
-            // headerTintColor: '#fff',
-            // headerTitleStyle: {
-            // fontWeight: 'bold',
-            // },
-
-
+           
           })}>
           <Tab.Screen name='Prometheus' component={PrometheusStackScreen} />
           <Tab.Screen name='Storybase' component={StoryStackScreen} />

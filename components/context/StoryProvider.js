@@ -6,7 +6,7 @@ const StoryProvider = ({ children }) => {
     const [stories, setStories] = useState([]);
 
     
-    //Searchiin!
+    //Search
     const findStories = async () => {
         const result = await AsyncStorage.getItem('STORIES');
         if (result !== null) setStories(JSON.parse(result));
