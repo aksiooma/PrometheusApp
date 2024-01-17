@@ -1,10 +1,7 @@
 # Prometheus
-Prometheus is a minimalistic creative writing tool designed to enhance story creation and facilitate freewriting sessions for writers. It features a random writing prompt generator to spark creativity, a toggle button to hide these prompts if needed, and an intuitive interface for saving, editing, and managing written works.
+Prometheus is a minimalistic creative writing tool designed to enhance story creation and facilitate freewriting sessions for writers. It features a random writing prompt generator to spark creativity, a toggle button to hide these prompts if needed, and an basic, intuitive interface for saving, searching, editing, and managing written works.
 
-<img src=https://res.cloudinary.com/dxlzstktn/image/upload/v1705487177/Prome/IMG_5820_swm8ja.png width="300" height="650" alt="Main Screen">
-<img src=https://res.cloudinary.com/dxlzstktn/image/upload/v1705487175/Prome/IMG_5822_pzvfzz.png width="300" height="650" alt="Text search">
-<img src=https://res.cloudinary.com/dxlzstktn/image/upload/v1705487175/Prome/IMG_5823_aan6vd.png width="300" height="650" alt="Text search">
-<img src=https://res.cloudinary.com/dxlzstktn/image/upload/v1705487174/Prome/IMG_5825_itxt3y.png width="300" height="650" alt="Text search">
+<img src=https://res.cloudinary.com/dxlzstktn/image/upload/v1705488544/Prome/noob_qorphc.png alt="Main Screen">
 
 
 ## Quick Installation Guide
