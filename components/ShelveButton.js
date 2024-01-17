@@ -4,8 +4,6 @@ import { AntDesign } from '@expo/vector-icons';
 
 const ShelveButton = ({ antIconName, size, color, style, onPress }) => {
   return (
-
-  
     <AntDesign
       name={antIconName}
       size={size || 24}

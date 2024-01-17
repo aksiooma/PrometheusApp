@@ -6,6 +6,7 @@ import { Button } from 'react-native-elements';
 import { Input } from 'react-native-elements';
 import { useStories } from './components/context/StoryProvider';
 import testdata from './Testdata'
+import {API_URL} from "@env"
 
 export default function WritePrometheus({ navigation }) {
 
@@ -56,7 +57,7 @@ export default function WritePrometheus({ navigation }) {
   // For fetching subreddit once.
   useEffect(() => {
     const fetchData = async () => {
-      const url = `https://prometheus-backend-api.vercel.app/api/reddit?subreddit=${process.env.SUBREDDIT_NAME}&sort=hot`;
+      const url = API_URL;
       try {
         const response = await fetch(url);
         if (!response.ok) {
